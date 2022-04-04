@@ -1,0 +1,41 @@
+#main {
+    width: 1000px;
+    margin: auto;
+}
+
+#content-target {
+    display: flex;
+    width: 890px;
+    margin: auto;
+    /* height: 890px; */
+    background-color: #38bcef;
+}
+#content-target #thumb-container {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 445px;
+    background-color: rgb(30 30 201);
+    margin: auto;
+}
+#content-target #thumb-container .thumb {
+    height: 80px;
+    width: 80px;
+    border: solid black 1px;
+    margin: auto;
+    background-color: lightslategray;
+}
+
+#content-target #main-image {
+    width: 790px;
+    height: 445px;
+    background-color: bisque;
+}
+#main #inline-content {
+    width: 890px;
+    height: 800px;
+    background-color: blue;
+    margin: auto;
+    text-align: center;
+    color: white;
+}

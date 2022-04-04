@@ -1,0 +1,12 @@
+{
+  "name": "recruiting-dom-injection",
+  "version": "1.0.0",
+  "description": "provide candidates with real world examples of the job requirements",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "gregclark2k11@gmail.com",
+  "license": "MIT"
+}

@@ -20,7 +20,8 @@ window.INTERVIEW.registerExercise({
         // success will be measured in levels
         //     - does default content display at all
         //     - were you able to display either default or alternate content based on conditions
-        //     - were you able to make changes for defensive coding to protect against operating on a null reference
+        //     - were you able to make changes for defensive coding to protect against operating on a null reference ( if the DOM were to change without warning )
+        //     - were you able to make other changes for best practices
         
         
         // make adjustments to the code as you see necessary
@@ -37,7 +38,7 @@ window.INTERVIEW.registerExercise({
                     return 'default';
 
                 // to score higher on this exercise
-                // return 'alternate' if the first thumb is selected from the thumb strip
+                // return 'alternate' // if the first thumb is selected from the thumb strip
                 
 
                 // we will return a default value 'default'
@@ -45,16 +46,20 @@ window.INTERVIEW.registerExercise({
             },
             isReady: () => {
                 // this is a check to confirm the target element is present
-                return !!document.querySelector(targetSelector);
+                const targetElement = document.querySelector(targetSelector);
+                const resizeElem = targetElement?.querySelector('img');
+                return !!document.querySelector(targetSelector) && !!resizeElem;
 
             },
             getDisplayElement: () => {
-                return document.querySelector(targetSelector);
+                const targetElement = document.querySelector(targetSelector);
+                const resizeElem = targetElement.querySelector('img');
+                return resizeElem;
             },
 
             init: () => {
                 if (displayContent.isReady()) {
-                    const targetElement = displayContent.getDisplayElement();
+                    const targetElement = document.querySelector(targetSelector);
 
                     const defaultContent = document.createElement('div');
                     const dfltSuccess = document.createElement('div');
@@ -64,15 +69,13 @@ window.INTERVIEW.registerExercise({
                     defaultContent.id = 'default-content';
                     defaultContent.setAttribute('style',`
                         display: none;
-                        position: relative;
+                        position: absolute;
                         top: 0px;
                         left: 0px;
                         width: 100%;
                         height: 100%;
-                        background-color: black;
                         color: white;
                         text-align: center;
-
                     `);
 
                     const alternateContent = document.createElement('div');
@@ -83,25 +86,22 @@ window.INTERVIEW.registerExercise({
                     alternateContent.id = 'alternate-content';
                     alternateContent.setAttribute('style',`
                         display: none;
-                        position: relative;
+                        position: absolute;
                         top: 0px;
                         left: 0px;
                         width: 100%;
                         height: 100%;
-                        background-color: #6946d1;
                         color: white;
                         text-align: center;
 
                     `);
 
-                    defaultContent.style.display = '';
-
-                    targetElement.insertAdjacentElement('beforeend', defaultContent);
-                    targetElement.insertAdjacentElement('beforeend', alternateContent);
+                    targetElement.insertAdjacentElement('afterbegin', defaultContent);
+                    targetElement.insertAdjacentElement('afterbegin', alternateContent);
                 }
             },
             show: (contentType) => {
-                const targetElement = displayContent.getDisplayElement();
+                const targetElement = document.querySelector(targetSelector);
                 if (contentType === 'default') {
                     targetElement.querySelector('#default-content').style.display = '';
                     targetElement.querySelector('#alternate-content').style.display = 'none';
@@ -110,6 +110,15 @@ window.INTERVIEW.registerExercise({
                     targetElement.querySelector('#alternate-content').style.display = '';
                 }
                     
+            },
+            size: () => {
+                const sizeElement = displayContent.getDisplayElement();
+                const contentElement = displayContent.shouldShow() === 'default' ?  document.querySelector('#default-content') : document.querySelector('#alternate-content');
+
+                contentElement.style.top = `${sizeElement.offsetTop}px`;
+                contentElement.style.left = `${sizeElement.offsetLeft}px`;
+                contentElement.style.height = `${sizeElement.offsetHeight}px`;
+                contentElement.style.width = `${sizeElement.offsetWidth}px`;
             }
         };
 

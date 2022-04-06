@@ -10,6 +10,11 @@
     /* height: 890px; */
     background-color: #38bcef;
 }
+
+#content-target .wide {
+    display: flex;
+}
+
 #content-target #thumb-container {
     display: flex;
     flex-direction: column;
@@ -24,6 +29,10 @@
     border: solid black 1px;
     margin: auto;
     background-color: lightslategray;
+}
+
+#content-target #thumb-container .thumb.selected-active {
+    border: solid 1px white;
 }
 
 #content-target #main-image {

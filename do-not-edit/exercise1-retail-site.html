@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title class="titleText">Challenge1</title>
+        <meta name="viewport" content="width=device-width" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
+    </head>
+    <body>
+        <h1>DOM Injection</h1>
+         <!-- Our work involves displaying content on 3rd party site pages
+            here we provide a DOM structure which is expected to receive our content
+                - this html structure cannot be changed by you
+                - make the assumption this structure is provided by a 3rd party
+        -->
+        <div id="retail-site"></div>
+        <!-- <script type="module" src="./main-image.js"></script> -->
+        <script type="module">
+            // snabby is our library to manipulate and control our content via shadowDom
+            import html from 'https://cdn.skypack.dev/snabby';
+
+            const model = {
+                selectedImg: 'assets/parrot.jpg'
+            };
+
+            const retailSite = document.querySelector('#retail-site');
+            const update = () => {
+                html.update( retailSite, getMainImage(model, update) );
+            }
+
+            update();
+
+            function getMainImage (model, update) {
+
+                const selectThumb = (ev, model, update) => {
+                    ev.preventDefault();
+                    document.querySelectorAll('.thumb').forEach((t) => {
+                        t.classList.remove('selected-active');
+                    });
+                    ev.target.parentNode.classList.add('selected-active');
+                    model.selectedImg = ev.target.src;
+                    console.log('ev ', ev.target.src, model.selectedImg)
+                    update();
+                };
+
+                return html`<div id="main">
+                    <link rel="stylesheet" href="main.css">
+                    <!-- this html structure cannot be changed by you-->
+                    <!-- make the assumption this structure is provided by a 3rd party -->
+                    
+                    <!-- make the assumption this is working properly -->
+                    <!-- make the assumption you do not have access to alter this code  -->
+                    <div id="content-target">
+                        <div id="thumb-container">
+                            <div class="thumb selected-active" @on:click="${(event) => selectThumb(event, model, update)}"><img src="assets/parrot.jpg" height="100%"/></div>
+                            <div class="thumb" @on:click="${(event) => selectThumb(event, model, update)}"><img src="assets/parrot.jpg" height="100%"/></div>
+                            <div class="thumb" @on:click="${(event) => selectThumb(event, model, update)}"><img src="assets/parrot.jpg" height="100%"/></div>
+                            <div class="thumb" @on:click="${(event) => selectThumb(event, model, update)}"><img src="assets/parrot.jpg" height="100%"/></div>
+                        </div>
+                        <div id="main-image">
+                            <img style="max-height: 100%; max-width: 100%;"
+                                @attrs:src="${model.selectedImg || 'assets/parrot.jpg'}" />
+                        </div>
+                        <div id="mobile-image"></div>
+                    </div>
+                    <div id="inline-content">
+                        Main Content 
+                    </div>
+                </div>`;
+
+            }
+        </script>
+        
+
+
+        <!-- make the assumption this is working as expected -->
+        <!-- this is not the code you are working with ;) -->
+        <script type="module" src="../do-not-edit-main.js"> </script>
+        <script type="module" src="../exercises/exercise1.js"> </script>
+        <script type="module">
+            window.INTERVIEW.checkExercise('Challenge1');
+        </script>
+
+    </body>
+
+</html>

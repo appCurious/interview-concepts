@@ -1,44 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title class="titleText">Programming Challenge</title>
-        <meta name="viewport" content="width=device-width" />
-        <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-    </head>
-    <body>
-        <h1>DOM Injection</h1>
-         <!-- Our work involves displaying content on 3rd party site pages
-            here we provide a DOM structure which is expected to receive our content
-                - this html structure cannot be changed by you
-                - make the assumption this structure is provided by a 3rd party
-        -->
-        <script type="module" src="do-not-edit/main-image.js"></script>
+window.INTERVIEW.registerExercise({
+    challengeName: 'Challenge1',
+    register: () => {
         
-    </body>
-    <!-- INTERVIEW Injection Exercise
-        this is an example of the work you might do on a periodic bases
-            - creating modules similar to this
-            - fixing modules similar to this
+        // INTERVIEW Injection Exercise
+        // this is an example of the work you might do on a periodic bases
+        //     - creating modules similar to this
+        //     - fixing modules similar to this
         
+
+        // Our work involves displaying content on 3rd party site pages
+        //     DOM structure expected to receive our content can be found from the navigation links on the index.html
+        //         - this html structure cannot be changed by you
+        //         - make the assumption this structure is provided by a 3rd party
+
      
-        work with the code below to display content inside the target element (main-image)
-        the html structure provided cannot be changed
+        // work with the code below to display content inside the target element (main-image)
+        // the html structure provided cannot be changed
 
-        success will be measured in levels
-            - does default content display at all
-            - were you able to display either default or alternate content based on conditions
-            - were you able to make changes for defensive coding to protect against operating on a null reference
-
+        // success will be measured in levels
+        //     - does default content display at all
+        //     - were you able to display either default or alternate content based on conditions
+        //     - were you able to make changes for defensive coding to protect against operating on a null reference
         
         
-        make adjustments to the code as you see necessary
-        make the assumption the names of these functions cannot change
-        make the assumption the return types of these functions cannot change
-    -->
-    <script>
+        // make adjustments to the code as you see necessary
+        // make the assumption the names of these functions cannot change
+        // make the assumption the return types of these functions cannot change
+
         const targetSelector = '.content-target #main-image';
-        
+                
         const displayContent = {
             shouldShow: () => {
                 // we often determine content to display based on wide view and narrow views
@@ -62,7 +52,7 @@
                 return document.querySelector(targetSelector);
             },
 
-           init: () => {
+            init: () => {
                 if (displayContent.isReady()) {
                     const targetElement = displayContent.getDisplayElement();
 
@@ -123,24 +113,7 @@
             }
         };
 
-        // this does NOT need to be adjusted
-        window.INTERVIEW = window.INTERVIEW || {}; window.INTERVIEW = { ...window.INTERVIEW, ...displayContent };
+        return displayContent;
+    }
+});
 
-    </script>
-
-    <!-- make the assumption this is working as expected -->
-    <!-- this is not the code you are working with ;) -->
-    <script type="module">
-        import html from 'https://cdn.skypack.dev/snabby';
-
-        // We will initialize 1 time on page load for this exercise
-        if (window.INTERVIEW.isReady()) {
-            window.INTERVIEW.init();
-            window.INTERVIEW.show(window.INTERVIEW.shouldShow());
-        } else {
-            console.warn(' !!! something has been changed that broke our content injection !!! ');
-        }
-
-    </script>
-
-</html>

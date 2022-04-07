@@ -6,18 +6,15 @@ const model = page.init();
 let lastNode;
 
 const update = () => {
-    console.log('update ', model)
-    html.update( lastNode, page.view(model, update) );
+    lastNode = html.update( lastNode, page.view(model, update) );
 }
 
 
 const retailSite = document.querySelector('#retail-site');
 lastNode = html.update(retailSite, page.view(model, update));
 
-// update();
 
 const resizer = new ResizeObserver((entries) => {
-    console.log('resize body', document.body.offsetWidth)
     model.displayWidth = document.body.offsetWidth;
     update();
 });
@@ -35,25 +32,43 @@ function retailPage () {
         },
         view: (model, update) => {
 
-            const insert = (node) => {
-                model.elem = node;
-            };
+            const renderThumbs = (model, update) => {
 
-            const selectThumb = (ev, model, update) => {
-                ev.preventDefault();
-                document.querySelectorAll('.thumb').forEach((t) => {
-                    t.classList.remove('selected-active');
-                });
-                ev.target.parentNode.classList.add('selected-active');
-                model.selectedImg = ev.target.src;
+                const selectThumb = (ev, model, idx) => {
+
+                    model.selectedImg = ev.target.src;
+                    model.selectedThumb = idx;
+
+                    update();
+                };  
                 
-                update();
+                const thumbSources = [
+                    'assets/parrot.jpg',
+                    'assets/parrot.jpg',
+                    'assets/parrot.jpg',
+                    'assets/parrot.jpg',
+                ];
+
+                model.selectedThumb = model.selectedThumb  || 0;
+
+                return thumbSources.map((thumb, idx) => {
+                    const isSelected = model.selectedThumb === idx;
+
+                    return html`
+                        <div class="thumb ${idx}"
+                            @class:selected-active=${isSelected}
+                            @on:click="${(event) => selectThumb(event, model, idx)}">
+
+                            <img src="${thumb}" height="100%"/>
+                        </div>
+                    `;
+                });
             };
         
             const isNarrow = model.displayWidth < 500; 
        
             return html`<div id="main"
-                
+                @key=retailer-${model.id}
                 @style:width="${model.displayWidth}px">
 
                 <link rel="stylesheet" href="./do-not-edit/main.css">
@@ -67,19 +82,21 @@ function retailPage () {
                     <div class="wide"
                         @style:display="${ !isNarrow ? '' : 'none' }">
         
-                        <div id="thumb-container">
-                            <div class="thumb selected-active" @on:click="${(event) => selectThumb(event, model, update)}"><img src="assets/parrot.jpg" height="100%"/></div>
-                            <div class="thumb" @on:click="${(event) => selectThumb(event, model, update)}"><img src="assets/parrot.jpg" height="100%"/></div>
-                            <div class="thumb" @on:click="${(event) => selectThumb(event, model, update)}"><img src="assets/parrot.jpg" height="100%"/></div>
-                            <div class="thumb" @on:click="${(event) => selectThumb(event, model, update)}"><img src="assets/parrot.jpg" height="100%"/></div>
-                        </div>
+                        <div id="thumb-container"> ${renderThumbs(model, update)} </div>
+
                         <div id="main-image">
                             <img style="max-height: 100%; max-width: 100%;"
                                 @attrs:src="${model.selectedImg || 'assets/parrot.jpg'}" />
                         </div>
+                        <div class="description">
+                            ${model.selectedThumb === 0 ? 'Parrots like to eat Seeds' : 'Parrots like to eat Apples'}
+                        </div>
                     </div>
                     <div id="mobile-image" 
                         @style:display="${isNarrow ? '' : 'none'}">
+                       
+                        <img style="max-height: 100%; max-width: 100%;"
+                            @attrs:src="${model.selectedImg || 'assets/parrot.jpg'}" />
                     
                     </div>
                 </div>
@@ -87,6 +104,20 @@ function retailPage () {
                     @style:width="${model.displayWidth}px">
 
                     Main Content 
+                    <div>
+                        <button
+                            @on:click=${() => {
+                                window.INTERVIEW.checkExercise('Challenge1');
+                            }}>Check Challenge 1</button>
+                    </div>
+                    <div 
+                        @style:display="${isNarrow ? '' : 'none'}">
+                        <button
+                            @on:click=${() => {
+                                window.INTERVIEW.registerExercise({challengeName: 'Challenge2', register: () => {}});
+                                window.INTERVIEW.checkExercise('Challenge2');
+                            }}>Check Challenge 2</button>
+                    </div>
                 </div>
             </div>`;
         }

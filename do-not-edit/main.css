@@ -36,7 +36,7 @@
 }
 
 #content-target #main-image {
-    width: 790px;
+    /* width: 790px; */
     height: 445px;
     background-color: bisque;
 }

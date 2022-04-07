@@ -28,15 +28,44 @@ import html from 'https://cdn.skypack.dev/snabby';
             // '#default-content'
             // '#alternate-content'
             const targetSelector = `#${flag}-content`;
-            const targetDiv = document.querySelector(targetSelector);
-            
+            let content;
             switch (flag) {
                 case 'default':
                     // add some interactive content
+                    try {
+                        if (!document.querySelector('#default-overlay-img')) {
+                           
+                            content = document.querySelector(targetSelector);
+                            content.append(document.createElement('div'));
+                            html.update(document.querySelector(targetSelector + '>div'), html`<div>
+                                <img src="assets/apple.jfif" style="top: 20px; left: 20px; position: absolute; width:50px; height: 50px;" />
+                            </div>`);
+
+                            console.log('Exercise 1 - able to inject content - how does it look?');
+                        }
+                       
+                    } catch (e) {
+                        console.warn(' !!! Exercise 1 caught and exception ', e);
+                    }
                     break;
                 
                 case 'alternate':
                     // add some different content
+                    try {
+                        if (!document.querySelector('#default-overlay-img')) {
+                           
+                            content = document.querySelector(targetSelector);
+                            content.append(document.createElement('div'));
+                            html.update(document.querySelector(targetSelector + '>div'), html`<div>
+                                <img src="assets/seeds.jfif" style="top: 20px; left: 20px; position: absolute; width:50px; height: 50px;" />
+                            </div>`);
+
+                            console.log('Exercise 1 - able to inject content - how does it look?');
+                        }
+                       
+                    } catch (e) {
+                        console.warn(' !!! Exercise 1 caught and exception ', e);
+                    }
                     break;
 
                 default:
@@ -53,7 +82,17 @@ import html from 'https://cdn.skypack.dev/snabby';
     };
 
     const challenge2 = () => {
+        const narrowElem = document.querySelector('#mobile-image');
+        if (!narrowElem) {
+            console.warn('exercise 2 - the narrow mobile-image is not present (you might be on a wide screen)')
+        } else {
+            // we are expecting alternate content here
+            const altContent = narrowElem.querySelector('#alternate-content');
+            if (!altContent)
+                return console.warn(' !!! Exercise 2 needs some work yet, not seeing the expected content');
 
+            console.log('Excercise 2 - looks like you might have it', narrowElem);
+        }
     };
 
     const checkChallengeMap = {

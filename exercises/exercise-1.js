@@ -17,11 +17,11 @@ window.INTERVIEW.registerExercise({
         // work with the code below to display content inside the target element (main-image)
         // the html structure provided cannot be changed
 
-        // success will be measured in levels
+        // SUCCESS will be measured in levels
         //     - does default content display at all
         //     - were you able to display either default or alternate content based on conditions
         //     - were you able to make changes for defensive coding to protect against operating on a null reference ( if the DOM were to change without warning )
-        //     - were you able to make other changes for best practices
+        //     - were you able to make other changes for best practices DRY
         
         
         // make adjustments to the code as you see necessary
@@ -35,7 +35,7 @@ window.INTERVIEW.registerExercise({
                 // we often determine content to display based on wide view and narrow views
                 // this can be mobile versions of the site but not always
                 if (document.querySelector('#content-target #mobile-image').offsetWidth > 0 )
-                    return 'default';
+                    return 'alternate';
 
                 // to score higher on this exercise
                 // return 'alternate' // if the first thumb is selected from the thumb strip
@@ -47,14 +47,12 @@ window.INTERVIEW.registerExercise({
             isReady: () => {
                 // this is a check to confirm the target element is present
                 const targetElement = document.querySelector(targetSelector);
-                const resizeElem = targetElement?.querySelector('img');
-                return !!document.querySelector(targetSelector) && !!resizeElem;
+                return !!document.querySelector(targetSelector) //&& !!resizeElem;
 
             },
             getDisplayElement: () => {
                 const targetElement = document.querySelector(targetSelector);
-                const resizeElem = targetElement.querySelector('img');
-                return resizeElem;
+                return targetElement;
             },
 
             init: () => {

@@ -12,8 +12,15 @@ These exercises are a glimpse into the daily work you could anticipate encounter
 ## Getting Started
 Branch off of main to make your personal feature branch
 Use the webserver of your choice to serve the files
-Review each index file as they are the coding evaluations
+## APP Server
+Use your favorite server to run the application and demonstrate your awesome code.
+
+## Code Exercises
+Exercises are found in the exercise-x.html files and the exercise-x.js files
+Instructions will be on both html and js files
 Make changes to the exercise files to correct the issues we have identified
+
+Watch the dev console for feedback
 
 Happy Coding
 
@@ -21,9 +28,6 @@ Happy Coding
 zip up your solution ( we don't want your great code pushed to the repo for someone else to copy )
 email the zip to the Syndigo employee you are coordinating with
 
-## Code Evaluations
 
-### index.html
-### exercise-*.html
 
 

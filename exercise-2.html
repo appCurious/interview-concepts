@@ -13,18 +13,39 @@
 
     </head>
     <body>
-        <!-- Continue to modify exercises/exercise-1.js
-            - the existing code must continue to work
-            - this time we want to see the mobile image receive the content
-        -->
+        
+        <!-- make the assumption this is working as expected -->
         <div id="retail-site">
             <h1>DOM Injection</h1>
         </div>
         <script type="module" src="do-not-edit/retail-page.js"></script>
-
         
         <!-- INTERVIEW Injection Exercise
-            review and fix exercise1.js -->
+            
+            Continue to modify exercises/exercise-1.js
+
+            - the original criteria is still the same
+                - have default content display over the main image
+                - if you were able, have alternative content display over the main image when the first thumb is selected
+                - function return types must not be changed
+                - function names cannot change
+
+            
+            - THIS EXERCISE 
+                - we want to see the mobile image receive the content
+                - emulate a mobile device OR resize your window to find when the Narrow version of the retail site displays
+                - make changes to the code so that content displays over the mobile image
+                - try to make it dynamic so that while changing the window size the content appears over the correct image
+
+            SUCCESS will be measured in levels
+                - does content display over the image on a narrow view
+                - does it display when the page is refreshed
+                - does it display dynamically as the window size is changed
+
+            HINTS
+                break the problem into small steps
+                understand the DOM structure and how it changes
+        -->
         <script type="module" src="./exercises/exercise-1.js" ></script>
        
 
@@ -32,8 +53,6 @@
         <!-- this is not the code you are working with ;) -->
         <script type="module">
             window.INTERVIEW.checkExercise('Challenge1');
-            window.INTERVIEW.registerExercise({challengeName: 'Challenge2', register: () => {}});
-            window.INTERVIEW.checkExercise('Challenge2');
         </script>
         
     </body>

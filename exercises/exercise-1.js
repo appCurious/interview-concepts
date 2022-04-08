@@ -1,6 +1,10 @@
 window.INTERVIEW.registerExercise({
     challengeName: 'Challenge1',
     register: () => {
+        // do not change these
+        // these are not the code you are working with ;)
+        const DEFAULT_CONTENT_ID = 'default-content';
+        const ALTERNATIVE_CONTENT_ID = 'alternate-content';
         
         // INTERVIEW Injection Exercise
         // this is an example of the work you might do on a periodic bases
@@ -47,7 +51,7 @@ window.INTERVIEW.registerExercise({
             isReady: () => {
                 // this is a check to confirm the target element is present
                 const targetElement = document.querySelector(targetSelector);
-                return !!document.querySelector(targetSelector) //&& !!resizeElem;
+                return !!document.querySelector(targetSelector);
 
             },
             getDisplayElement: () => {
@@ -64,7 +68,7 @@ window.INTERVIEW.registerExercise({
                     dfltSuccess.innerHTML = 'Default Content - Displays';
                     defaultContent.appendChild(dfltSuccess);
 
-                    defaultContent.id = 'default-content';
+                    defaultContent.id = DEFAULT_CONTENT_ID; // do not change this id
                     defaultContent.setAttribute('style',`
                         display: none;
                         position: absolute;
@@ -81,7 +85,7 @@ window.INTERVIEW.registerExercise({
                     altSuccess.innerHTML = 'Alternate Content - Displays';
                     alternateContent.appendChild(altSuccess);
 
-                    alternateContent.id = 'alternate-content';
+                    alternateContent.id = ALTERNATIVE_CONTENT_ID; // do not change this id
                     alternateContent.setAttribute('style',`
                         display: none;
                         position: absolute;
@@ -100,18 +104,19 @@ window.INTERVIEW.registerExercise({
             },
             show: (contentType) => {
                 const targetElement = document.querySelector(targetSelector);
+                
                 if (contentType === 'default') {
-                    targetElement.querySelector('#default-content').style.display = '';
-                    targetElement.querySelector('#alternate-content').style.display = 'none';
+                    targetElement.querySelector(`#${DEFAULT_CONTENT_ID}`).style.display = '';
+                    targetElement.querySelector(`#${ALTERNATIVE_CONTENT_ID}`).style.display = 'none';
                 } else {
-                    targetElement.querySelector('#default-content').style.display = 'none';
-                    targetElement.querySelector('#alternate-content').style.display = '';
+                    targetElement.querySelector(`#${DEFAULT_CONTENT_ID}`).style.display = 'none';
+                    targetElement.querySelector(`#${ALTERNATIVE_CONTENT_ID}`).style.display = '';
                 }
                     
             },
             size: () => {
                 const sizeElement = displayContent.getDisplayElement();
-                const contentElement = displayContent.shouldShow() === 'default' ?  document.querySelector('#default-content') : document.querySelector('#alternate-content');
+                const contentElement = displayContent.shouldShow() === 'default' ?  document.querySelector(`#${DEFAULT_CONTENT_ID}`) : document.querySelector(`#${ALTERNATIVE_CONTENT_ID}`);
 
                 contentElement.style.top = `${sizeElement.offsetTop}px`;
                 contentElement.style.left = `${sizeElement.offsetLeft}px`;

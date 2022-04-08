@@ -88,8 +88,8 @@ function retailPage () {
                             <img style="max-height: 100%; max-width: 100%;"
                                 @attrs:src="${model.selectedImg || 'assets/parrot.jpg'}" />
                         </div>
-                        <div class="description">
-                            ${model.selectedThumb === 0 ? 'Parrots like to eat Seeds' : 'Parrots like to eat Apples'}
+                        <div class="description" style="display:flex; align-items:center;">
+                            <h3>${model.selectedThumb === 0 ? 'Parrots like to eat Seeds' : 'Parrots like to eat Apples'}</h3>
                         </div>
                     </div>
                     <div id="mobile-image" 

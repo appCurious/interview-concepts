@@ -5,29 +5,46 @@ import html from 'https://cdn.skypack.dev/snabby';
 
 ( function () {
     
+    const DEFAULT_CONTENT_ID = 'default-content';
+    const ALTERNATIVE_CONTENT_ID = 'alternate-content';
+    const MOBILE_IMAGE_ID = 'mobile-image';
+
     const challenge1 = (flag) => {
 
+       
+
         if (window.INTERVIEW.isReady()) {
-            window.INTERVIEW.init();
+            // only do this once to ensure we are not duplicating our content
+            if(!document.querySelector(`#${DEFAULT_CONTENT_ID}`)) {
+                window.INTERVIEW.init();
 
-            const resizer = new ResizeObserver((entries) => {
-                window.INTERVIEW.size();
-            });
-            resizer.observe(window.INTERVIEW.getDisplayElement());
+                window.INTERVIEW.challenges['Challenge1'].resizer = new ResizeObserver((entries) => {
+                    window.INTERVIEW.size();
+                });
+                window.INTERVIEW.challenges['Challenge1'].resizer.observe(window.INTERVIEW.getDisplayElement());
 
-            const m = new MutationObserver((records) => {
-                window.INTERVIEW.size();
-            });
-            m.observe(window.INTERVIEW.getDisplayElement(), {attributes: true})
+                window.INTERVIEW.challenges['Challenge1'].mutator = new MutationObserver((records) => {
+                    window.INTERVIEW.size();
+                });
+
+                window.INTERVIEW.challenges['Challenge1'].mutator.observe(window.INTERVIEW.getDisplayElement(), {attributes: true});
+
+                // const resizer = new ResizeObserver((entries) => {
+                //     window.INTERVIEW.size();
+                // });
+                // resizer.observe(window.INTERVIEW.getDisplayElement());
+
+                // const m = new MutationObserver((records) => {
+                //     window.INTERVIEW.size();
+                // });
+                // m.observe(window.INTERVIEW.getDisplayElement(), {attributes: true});
+            }
 
            
 
             const flag = window.INTERVIEW.shouldShow();
             console.log(`should show ${flag}`);
             
-            // '#default-content'
-            // '#alternate-content'
-            const targetSelector = `#${flag}-content`;
             let content;
             switch (flag) {
                 case 'default':
@@ -35,9 +52,9 @@ import html from 'https://cdn.skypack.dev/snabby';
                     try {
                         if (!document.querySelector('#default-overlay-img')) {
                            
-                            content = document.querySelector(targetSelector);
+                            content = document.querySelector(`#${DEFAULT_CONTENT_ID}`);
                             content.append(document.createElement('div'));
-                            html.update(document.querySelector(targetSelector + '>div'), html`<div>
+                            html.update(content.querySelector('div'), html`<div>
                                 <img src="assets/apple.jfif" style="top: 20px; left: 20px; position: absolute; width:50px; height: 50px;" />
                             </div>`);
 
@@ -54,13 +71,13 @@ import html from 'https://cdn.skypack.dev/snabby';
                     try {
                         if (!document.querySelector('#default-overlay-img')) {
                            
-                            content = document.querySelector(targetSelector);
+                            content = document.querySelector(`#${ALTERNATIVE_CONTENT_ID}`);
                             content.append(document.createElement('div'));
-                            html.update(document.querySelector(targetSelector + '>div'), html`<div>
+                            html.update(content.querySelector('div'), html`<div>
                                 <img src="assets/seeds.jfif" style="top: 20px; left: 20px; position: absolute; width:50px; height: 50px;" />
                             </div>`);
 
-                            console.log('Exercise 1 - able to inject content - how does it look?');
+                            console.log('Exercise 1 - able to inject Alternate content - how does it look?');
                         }
                        
                     } catch (e) {
@@ -82,12 +99,12 @@ import html from 'https://cdn.skypack.dev/snabby';
     };
 
     const challenge2 = () => {
-        const narrowElem = document.querySelector('#mobile-image');
+        const narrowElem = document.querySelector(`#${MOBILE_IMAGE_ID}`);
         if (!narrowElem) {
             console.warn('exercise 2 - the narrow mobile-image is not present (you might be on a wide screen)')
         } else {
             // we are expecting alternate content here
-            const altContent = narrowElem.querySelector('#alternate-content');
+            const altContent = narrowElem.querySelector(`#${ALTERNATIVE_CONTENT_ID}`);
             if (!altContent)
                 return console.warn(' !!! Exercise 2 needs some work yet, not seeing the expected content');
 

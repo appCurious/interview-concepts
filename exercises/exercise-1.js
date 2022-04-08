@@ -104,7 +104,7 @@ window.INTERVIEW.registerExercise({
             },
             show: (contentType) => {
                 const targetElement = document.querySelector(targetSelector);
-                
+
                 if (contentType === 'default') {
                     targetElement.querySelector(`#${DEFAULT_CONTENT_ID}`).style.display = '';
                     targetElement.querySelector(`#${ALTERNATIVE_CONTENT_ID}`).style.display = 'none';

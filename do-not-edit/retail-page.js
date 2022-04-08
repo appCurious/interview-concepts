@@ -104,12 +104,6 @@ function retailPage () {
                     @style:width="${model.displayWidth}px">
 
                     Main Content 
-                    <div>
-                        <button
-                            @on:click=${() => {
-                                window.INTERVIEW.checkExercise('Challenge1');
-                            }}>Check Challenge 1</button>
-                    </div>
                     <div 
                         @style:display="${isNarrow ? '' : 'none'}">
                         <button

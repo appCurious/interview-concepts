@@ -8,7 +8,7 @@ import html from 'https://cdn.skypack.dev/snabby';
     const DEFAULT_CONTENT_ID = 'default-content';
     const ALTERNATIVE_CONTENT_ID = 'alternate-content';
     const MOBILE_IMAGE_ID = 'mobile-image';
-    let imageContent;
+    let content;
     let mainContent;
 
     // render a small amount of content for confirmation of fixing the injection module
@@ -62,8 +62,8 @@ import html from 'https://cdn.skypack.dev/snabby';
                             try {
                                 if (!document.querySelector('#default-overlay-img')) {
                                 
-                                    imageContent = document.querySelector(`#${DEFAULT_CONTENT_ID}`);
-                                    html.update(imageContent.querySelector('div'), renderSpot({src: 'assets/apple.jfif',text: flag, content: imageContent, challengeName: 'Challenge1'}));
+                                    content = document.querySelector(`#${DEFAULT_CONTENT_ID}`);
+                                    html.update(content.querySelector('div'), renderSpot({src: 'assets/apple.jfif',text: flag, content, challengeName: 'Challenge1'}));
 
                                     console.log('Exercise 1 - able to inject content - how does it look?');
                                 }
@@ -78,8 +78,8 @@ import html from 'https://cdn.skypack.dev/snabby';
                             try {
                                 if (!document.querySelector('#default-overlay-img')) {
                                 
-                                    imageContent = document.querySelector(`#${ALTERNATIVE_CONTENT_ID}`);
-                                    html.update(imageContent.querySelector('div'), renderSpot({src: 'assets/seeds.jfif',text: flag, content: imageContent,  challengeName: 'Challenge1'}));
+                                    content = document.querySelector(`#${ALTERNATIVE_CONTENT_ID}`);
+                                    html.update(content.querySelector('div'), renderSpot({src: 'assets/seeds.jfif',text: flag, content,  challengeName: 'Challenge1'}));
                                 
                                     console.log('Exercise 1 - able to inject Alternate content - how does it look?');
                                 }
@@ -118,9 +118,56 @@ import html from 'https://cdn.skypack.dev/snabby';
         }
     };
 
+    const challenge3 = () => {
+        // expecting the module to have init, view that registers and is added to window.INTERVIEW
+        // i was taught to know my data, now my structure
+        const instructs = `review the data in the configs and use them appropriately.  
+Be sure to add the configs model
+Use the display width
+How might the content be presented in fullscreen
+`;
+
+        const configs = {
+            exerciseInstructions: instructs,
+            displayWidth: 780,
+            isFullscreen: false,
+            items: [
+                // what oh what should we add here
+            ]
+        };
+
+        // review the model for the original content - instruction 1
+        const model = window.INTERVIEW.initExercise3(configs);
+
+        // setup injection target
+        const targetMain = document.querySelector('#main-content');
+        const targetElem = targetMain.querySelector('div');
+        targetElem.id = "injection-point";
+        targetElem.append(document.createElement('div'));
+        targetElem.setAttribute('style', `
+            max-width: 1200px;
+            margin: auto;
+        `);
+
+        const update = () => {
+            model.displayWidth = Math.min(targetMain.offsetWidth, 1400);
+            mainContent = html.update(mainContent, window.INTERVIEW.viewExercise3(model, update));
+        };
+
+        mainContent = html.update(targetElem.querySelector('div'), html`<div></div>`);
+
+        window.INTERVIEW.challenges['Challenge3'].resizer = new ResizeObserver((entries) => {
+           update();
+        });
+        window.INTERVIEW.challenges['Challenge3'].resizer.observe(targetMain);
+
+        
+    };
+
     const checkChallengeMap = {
         Challenge1: challenge1,
         Challenge2: challenge2,
+        Challenge3: challenge3,
     };
 
     window.INTERVIEW = window.INTERVIEW || {

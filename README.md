@@ -24,6 +24,11 @@ Watch the dev console for feedback
 
 Happy Coding
 
+## Snab What
+snabby, the virtual dom rendering library https://github.com/mreinstein/snabby
+
+We use snabby to build out our internal framework.  As you progress through the exercises you will work with this library.
+
 ## When You Are Satisfied With Your Work
 zip up your solution ( we don't want your great code pushed to the repo for someone else to copy )
 email the zip to the Syndigo employee you are coordinating with

@@ -102,16 +102,8 @@ function retailPage () {
                 </div>
                 <div id="main-content"
                     @style:width="${model.displayWidth}px">
-                    Main Content 
-                    <div 
-                        @style:display="${isNarrow ? '' : 'none'}">
-                       
-                        <button
-                            @on:click=${() => {
-                                window.INTERVIEW.registerExercise({challengeName: 'Challenge2', register: () => {}});
-                                window.INTERVIEW.checkExercise('Challenge2');
-                            }}>Check Challenge 2</button>
-                    </div>
+                    <!-- expecting great things -->
+                    <div></div>
                 </div>
             </div>`;
         }

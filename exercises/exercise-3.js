@@ -16,6 +16,7 @@ window.INTERVIEW.registerExercise({
        };
        const viewExercise3 = (model, update) => {
         // call update(); when you make changes to the DOM
+        // call update(); on user interactions that would update the DOM
         // we will call viewExercise3(model, update) for you to render your content
 
         console.log('review ', model)

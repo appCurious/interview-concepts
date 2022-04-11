@@ -20,6 +20,7 @@ button {
 
 #content-target .wide {
     display: flex;
+    margin: auto;
 }
 
 #content-target #thumb-container {

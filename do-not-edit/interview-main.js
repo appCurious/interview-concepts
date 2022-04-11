@@ -2,6 +2,9 @@ import html from 'https://cdn.skypack.dev/snabby';
 
 // Thanks for looking at this.  Look but do NOT touch ;)
 // this is the logic that provides you feedback as you work through the exercises
+// it may give you some insight into how to reslove some exercises
+// this code uses production concepts to mimic real world situations.
+// make the assumption the code functions as intended - do NOT alter this code
 
 ( function () {
     
@@ -13,7 +16,6 @@ import html from 'https://cdn.skypack.dev/snabby';
 
     // render a small amount of content for confirmation of fixing the injection module
     const renderSpot = ({src, text, content, challengeName }) => {
-        console.log('text ', text)
         const click = () => {
             window.INTERVIEW.challenges[challengeName].show = !window.INTERVIEW.challenges[challengeName].show;
 
@@ -64,8 +66,8 @@ import html from 'https://cdn.skypack.dev/snabby';
                                 
                                     content = document.querySelector(`#${DEFAULT_CONTENT_ID}`);
                                     html.update(content.querySelector('div'), renderSpot({src: 'assets/apple.jfif',text: flag, content, challengeName: 'Challenge1'}));
-
-                                    console.log('Exercise 1 - able to inject content - how does it look?');
+                                    const isPreferAlternative = document.querySelector('#thumb-container .thumb')?.classList.contains('selected-active');
+                                    console.log(`Exercise 1 - able to inject content - how does it look? \n ${isPreferAlternative ? 'we prefer alternate content on the first thumb' : ''}`);
                                 }
                             
                             } catch (e) {

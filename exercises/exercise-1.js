@@ -18,7 +18,7 @@ window.INTERVIEW.registerExercise({
         //         - make the assumption this structure is provided by a 3rd party
 
      
-        // work with the code below to display content inside the target element (main-image)
+        // work with the code below to display content over the target element (main-image)
         // the html structure provided cannot be changed
 
         // SUCCESS will be measured in levels

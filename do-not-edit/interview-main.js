@@ -123,11 +123,12 @@ import html from 'https://cdn.skypack.dev/snabby';
     const challenge3 = () => {
         // expecting the module to have init, view that registers and is added to window.INTERVIEW
         // i was taught to know my data, now my structure
-        const instructs = `review the data in the configs and use them appropriately.  
-Be sure to add the configs model
-Use the display width
-How might the content be presented in fullscreen
-`;
+        const instructs = {
+            1: 'Review the data in the configs and use them appropriately',
+            2: 'Be sure to add the configs to the model',
+            3: 'Use the display width',
+            4: 'How might the content be presented in fullscreen'
+        };
 
         const configs = {
             exerciseInstructions: instructs,
@@ -135,6 +136,22 @@ How might the content be presented in fullscreen
             isFullscreen: false,
             items: [
                 // what oh what should we add here
+                {
+                    type: 'Image',
+                    url: './do-not-edit/assets/food1.jfif',
+                    description: 'just like cereal for people, these high fiber ingredients are a well balanced way for your bird to begin the day'
+                },
+                {
+                    type: 'Image',
+                    url: './do-not-edit/assets/food2.jfif',
+                    description: 'these birdy pebbles with fruit flavor overload are a high performance meal sure to enhance any birds diet.  sure beats meal worms.'
+                },
+                {
+                    type: 'Image',
+                    url: './do-not-edit/assets/food3.jpg',
+                    description: 'seeds and peanuts are the traditional blahzay diet for doemsticated birds.  Our vitamin injected supplement is engineered to improve the quality of life for your pet bird.'
+                }
+
             ]
         };
 

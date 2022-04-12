@@ -47,12 +47,22 @@
                 - how far did you get with the instructions
 
         -->
-        <script type="module" src="./exercises/exercise-3.js" ></script>
        
 
         <!-- make the assumption this is working as expected -->
         <!-- this is not the code you are working with ;) -->
         <script type="module">
+            import ex3 from './exercises/exercise-3.js';
+            console.log(ex3)
+            window.INTERVIEW.registerExercise({
+                challengeName: 'Challenge3',
+                register: () => {
+                    return {
+                        initExercise3: ex3.init,
+                        viewExercise3: ex3.view 
+                    };
+                }
+            });
             window.INTERVIEW.checkExercise('Challenge3');
         </script>
         

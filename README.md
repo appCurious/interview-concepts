@@ -10,17 +10,18 @@ The outcome of each exercise indicates to us what your programming style (coding
 These exercises are a glimpse into the daily work you could anticipate encountering if you were to be hired
 
 ## Getting Started
-Clone the repo
-work on main branch
-Use the webserver of your choice to serve the files
-Open the index.html and hack on
+* Clone the repo
+* work on main branch
+* Use the webserver of your choice to serve the files
+* Open the index.html and hack on
 ## APP Server
 Use your favorite server to run the application and demonstrate your awesome code.
 
 ## Code Exercises
-* Exercises are found in the exercise-x.html files and the exercise-x.js files
+* Exercises are found on the index, exercise-x.html files and the exercise-x.js files
 * Instructions will be on both html and js files
 * Make changes to the exercise files to correct the issues we have identified
+* You can assume a modern browser - support for optional chaining, custom elements v1, no need to polyfill or handle old browsers 
 
 Watch the dev console for feedback - it's not perfect but messages are intended to help guide you some
 

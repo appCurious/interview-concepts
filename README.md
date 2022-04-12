@@ -28,7 +28,7 @@ Watch the dev console for feedback - it's not perfect but messages are intended 
 * We understand candidates are at different skill levels
 
 
-
+Exercise 1 and 2 have example images found in assets
 
 Happy Coding
 

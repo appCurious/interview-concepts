@@ -10,12 +10,12 @@ The outcome of each exercise indicates to us what your programming style (coding
 These exercises are a glimpse into the daily work you could anticipate encountering if you were to be hired
 
 ## Getting Started
-* Clone the repo
+* Clone the repo ( or you may have had it provided to you )
 * work on main branch
 * Use the webserver of your choice to serve the files
 * Open the index.html and hack on
 ## APP Server
-Use your favorite server to run the application and demonstrate your awesome code.
+Use your favorite web server to run the application and demonstrate your awesome code.
 
 ## Code Exercises
 * Exercises are found on the index, exercise-x.html files and the exercise-x.js files

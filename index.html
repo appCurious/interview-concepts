@@ -61,9 +61,12 @@
             </div>
             <div id="content">
                 <div>Last Exercise Goes Here</div>
-                <!-- INTERVIEW Closing Exercise5
+                <!-- INTERVIEW Closing Exercise
                     
                     !!! Thank you for participating in our Interview Process !!!
+
+                    - Render the content from exercise-3 in a custom element
+                    - Add onto exercise-3 with your feedback regarding this exercise
 
                     we want to hear from you.  feedback is welcome.
                         - we're interested in your experience with these exercises
@@ -72,8 +75,6 @@
                         - were you able to understand the instructions
                         - did you ask questions and were the answers helpful
 
-                    If you like you could create a snabby module of your own and render it here ( we introduced snabby in previous exercises )
-
                     This is your widget and your opportunity to make something that reflects your abilities
                         - use your knowledge of JavaScript, HTML, CSS
                         - use best practices
@@ -81,7 +82,15 @@
                         - Thank you for participating in our Interview Process
                 -->
                 <interview-challenge></interview-challenge>
-                <script type="module" src="./exercises/last-exercise.js"></script>
+                <script type="module" src="./exercises/exercise-element.js"></script>
+
+                <!-- we'll listen for feedback, please render in it in the DOM as well -->
+                <script type="module">
+                    const interviewElement = document.querySelector('interview-challenge');
+                    interviewElement.addEventListener('feedback', (ev) => {
+                        console.log(ev);
+                    });
+                </script>
             </div>
         </div>
         

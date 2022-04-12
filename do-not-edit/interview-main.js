@@ -139,17 +139,20 @@ import html from 'https://cdn.skypack.dev/snabby';
                 {
                     type: 'Image',
                     url: './do-not-edit/assets/food1.jfif',
-                    description: 'just like cereal for people, these high fiber ingredients are a well balanced way for your bird to begin the day'
+                    description: 'just like cereal for people, these high fiber ingredients are a well balanced way for your bird to begin the day',
+                    alt: 'mixed bird food'
                 },
                 {
                     type: 'Image',
                     url: './do-not-edit/assets/food2.jfif',
-                    description: 'these birdy pebbles with fruit flavor overload are a high performance meal sure to enhance any birds diet.  sure beats meal worms.'
+                    description: 'these birdy pebbles with fruit flavor overload are a high performance meal sure to enhance any birds diet.  sure beats meal worms.',
+                    alt: 'food pebbles for birds'
                 },
                 {
                     type: 'Image',
                     url: './do-not-edit/assets/food3.jpg',
-                    description: 'seeds and peanuts are the traditional blahzay diet for doemsticated birds.  Our vitamin injected supplement is engineered to improve the quality of life for your pet bird.'
+                    description: 'seeds and peanuts are the traditional blahzay diet for doemsticated birds.  Our vitamin injected supplement is engineered to improve the quality of life for your pet bird.',
+                    alt: 'standard seeds'
                 }
 
             ]

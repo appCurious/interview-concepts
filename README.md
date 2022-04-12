@@ -24,22 +24,28 @@ Use your favorite server to run the application and demonstrate your awesome cod
 * You can assume a modern browser - support for optional chaining, custom elements v1, no need to polyfill or handle old browsers 
 
 Watch the dev console for feedback - it's not perfect but messages are intended to help guide you some
+* Take the exercises as far as you can
+* We understand candidates are at different skill levels
+
 
 
 
 Happy Coding
 
-## Snab What
-snabby, the virtual dom rendering library https://github.com/mreinstein/snabby
+## Custom Elements and Snab What
 
 We use snabby to build out our ui components.  As you progress through the exercises you will work with this library.
+* snabby, the virtual dom rendering library https://github.com/mreinstein/snabby
 
-## Other Resources
-custom elements v1: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements
+We'll use a custom element in this evaluation as well
+* custom elements v1: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements
 
 ## When You Are Satisfied With Your Work
 zip up your solution ( we don't want your great code pushed to the repo for someone else to copy )
 email the zip to the Syndigo employee you are coordinating with
+
+## Completion Time
+Take the time that you need and submit when ready.  That said it should not take a week to complete the exercises
 
 
 

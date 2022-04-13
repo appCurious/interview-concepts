@@ -87,9 +87,11 @@
                 <!-- we'll listen for feedback, please render in it in the DOM as well -->
                 <script type="module">
                     const interviewElement = document.querySelector('interview-challenge');
-                    interviewElement.addEventListener('feedback', (ev) => {
-                        console.log(ev);
+                    const mut = new MutationObserver( (mutationList, observer) => {
+                        onsole.log('we are listening... ',mutationList[0]?.target?.feedback);
                     });
+
+                    mut.observe(interviewElement, {attributes: true});
                 </script>
             </div>
         </div>

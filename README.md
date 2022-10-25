@@ -42,7 +42,7 @@ We'll use a custom element in this evaluation as well
 
 ## When You Are Satisfied With Your Work
 zip up your solution ( we don't want your great code pushed to the repo for someone else to copy )
-email the zip to the Syndigo employee you are coordinating with
+email the zip to the employee you are coordinating with
 
 ## Completion Time
 Take the time that you need and submit when ready.  That said it should not take a week to complete the exercises
